@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.JS - Hello World</title>
+</head>
+<body>
+    <!-- vue precisa ter um container principal, no caso essa div-->
+    <div id="start">
+        <h1>{{ message }}</h1>
+    </div>    
+
+
+    <!-- <script src="vue.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> usando CDN -->
+    
+    <!-- para instalar o Vue JS com NPM basta utilizar o comando 'npm install vue' ou 'npm install vue@versao' - bom para ser utilizado em projetos de larga escala com Vue-->
+    <!-- para instalar o Vue JS com YARN basta utilizar o comando 'yarn add vue' -->
+    <!-- <script src="node_modules/vue/dist/vue.min.js"></script> -->
+    
+    <!-- podemos usar o vue-cli tambem. Documentação disponivel em https://cli.vuejs.org -->
+
+    <!-- usando 'vue create nomeDoApp' nós criamos o primeiro template com o framework-->
+
+
+
+    <script>
+
+        let app = new Vue({ //usar uma variavel para receber o new Vue permite alterar os dados com maior facilidade
+            el: '#start',
+            data: {
+                message: 'Hello World'
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

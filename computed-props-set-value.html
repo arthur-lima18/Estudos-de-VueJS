@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Computed Properties - Definindo um Valor</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="computed_props">
+            <h2>Nome: {{ person.firstName }} {{ person.lastName }}</h2>
+            <h2>Nome completo Computed: {{ fullName }}</h2>
+        </div>
+
+        <script>
+            let app = new Vue({
+                el: '#computed_props',
+                data: {
+                    person: {
+                        firstName: 'Arthur',
+                        lastName: 'Lima'
+                    }
+                },
+                computed: {
+                    fullName: {
+                        get:  function() {
+                            return `${this.person.firstName} ${this.person.lastName}`
+                        },
+                        set:  function(newFullName) {
+                            let name = newFullName.split(' ')
+                            
+                            this.person.firstName = name[0]
+                            this.person.lastName = name[1]
+                        }
+                    }
+                }
+                
+            })
+        </script>
+    </body>
+</html>
+
+<!-- Diferenças entre ComputedProps e Métodos:
+    Métodos realizam açoes e eventos
+    ComputedProps manipulam dados
+
+    ComputedProps ficam em cache
+    Métodos não ficam em cache, sendo mais pesados
+-->

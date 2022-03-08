@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Computed Properties</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="computed_props">
+            <h2>Nome: {{ person.firstName }} {{ person.lastName }}</h2>
+            <h2>Nome completo Computed: {{ fullName }}</h2>
+            <h2>Nome completo Computed: {{ fullName }}</h2>
+            <h2>Nome completo Computed: {{ fullName }}</h2>
+            <h2>Nome completo Método: {{ getFullName() }}</h2>
+            <h2>Nome completo Método: {{ getFullName() }}</h2>
+            <h2>Nome completo Método: {{ getFullName() }}</h2>
+        </div>
+
+        <script>
+            let app = new Vue({
+                el: '#computed_props',
+                data: {
+                    person: {
+                        firstName: 'Arthur',
+                        lastName: 'Lima'
+                    }
+                },
+                methods: {
+                    getFullName: function() {
+                        console.log('Método')
+                        return `${this.person.firstName} ${this.person.lastName}`
+                    }
+                },
+                computed: {
+                    fullName: function() {
+                        console.log('Computed')
+                        return `${this.person.firstName} ${this.person.lastName}`
+                    }
+                }
+                
+            })
+        </script>
+    </body>
+</html>
+
+<!-- Diferenças entre ComputedProps e Métodos:
+    Métodos realizam açoes e eventos
+    ComputedProps manipulam dados
+
+    ComputedProps ficam em cache
+    Métodos não ficam em cache, sendo mais pesados
+-->

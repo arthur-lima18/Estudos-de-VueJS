@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-if VS v-show</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <h1 v-if="isLogged">V-IF - Olá! Desejamos boas vindas à nossa Área Administrativa</h1>
+            <h1 v-show ="isLogged">V-SHOW - Olá! Desejamos boas vindas à nossa Área Administrativa</h1>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    isLogged: true //mudar para false na inspeção de elemento do navegador, podendo perceber que a tag com v-show ainda existe, porém oculta
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    O v-if insere ou remove um elemento, enquanto o v-show apenas deixa o elemento oculto/escondido
+
+    O v-show mexe diretamente na propriedade 'display' do CSS
+
+    O v-if é mais lento, devendo ser usando quando a condição não fizer muitas alterações na página
+    O v-show é mais leve, exigindo do servidor somente no primeiro carregamento
+-->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-model</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <h3 v-bind:style=" { fontSize: textSize + 'px' }">Mudando o tamanho do texto</h3>
+            <input type="text" placeholder="Digite o tamanho do texto" v-model="textSize">
+
+            <h4 v-bind:style=" { color: textColor }">Mudando a cor do texto</h4>
+            <input type="text" placeholder="Digite a cor do texto" v-model="textColor">
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    textSize: 10,
+                    textColor: 'red'
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    podemos usar a v-model nas tags input, select e texarea, além da possibilidade de uso em Componentes
+    
+    manipulamos os valores em tempo real com a tag v-model
+
+    o v-model tem modificadores .number, .trim, .lazy:
+    .number transforma o valor de string para numerto
+    .trim remove os espaços antes e depois da propriedade
+    .lazy define os eventos de mudança a serem ouvidos na mudança
+-->

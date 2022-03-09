@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-bind</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <h2>Acesse o meu GitHub:</h2>
+            <a v-bind:href="url">GitHub - Arthur Silva Lima</a> <!-- podemos substituir o 'v-bind:' por ':' apenas, ficando ':href' --> 
+
+            <!-- podemos passar o nome do atributo por parametro no v-bind usando [] -->
+            <p v-bind:[arg]="value">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quibusdam repellendus sapiente autem est ea eveniet fuga libero magnam similique atque perspiciatis, modi soluta, nisi nostrum architecto laboriosam. Veritatis, consequatur.</p>
+        
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    url: 'https://github.com/arthur-lima18',
+                    arg: 'title',
+                    value: 'Paragrafo de exemplo'
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    A diretiva v-bind pode vincular o valor de qualquer propriedade a uma variavel do Vue, fazendo com que alguns atributos se tornem dinamicos
+-->

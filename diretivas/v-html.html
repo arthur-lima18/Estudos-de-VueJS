@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-html</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <div v-html="headerHTML"></div>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    headerHTML: `
+                        <header>
+                            <img src="../assets/logo-hcode.svg" style="margin: auto 30%;">
+                            <h1 style="text-align:center;"> HCODE Treinamentos </h1>
+                        </header>
+                    `
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    A diretiva v-html interpreta e exibe um código HTML na página
+
+    A renderização dinâmica pode dar aberturas a ataques XSS
+-->

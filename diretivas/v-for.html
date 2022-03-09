@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-for</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <h2>Listagem de Cidades</h2>
+            <ol>    <!-- a diretiva v-for funciona como um foreach -->
+                <!-- <li v-for="city in cities">{{ city }}</li> --> <!--percorre um vetor-->
+                <li v-for="item in cities">
+                    {{ item.city }} - {{ item.country }}
+                </li>
+            </ol>
+
+            <h2>Listagem de Filmes</h2>
+            <ul>
+                <li v-for="(picture, index) in movies"> <!-- index indica a posiçao no vetor -->
+                    {{ index }}. {{ picture }}
+                </li>
+            </ul>
+            
+            <h2>Empresa</h2>
+            <p v-for="(valuye, key, index) in company">{{ key }}: {{ value }}</p> <!-- podemos utilizar a diretiva v-for em tags que nao sejam de lista -->
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    // cities: ['Nova York', 'São Paulo', 'Paris', 'Salvador'] //vetor com nomes de cidades
+                    cities: [{
+                        city: 'Nova York',
+                        country: 'EUA'
+                    },
+                    {
+                        city: 'São Paulo',
+                        country: 'Brasil'
+                    },
+                    {
+                        city: 'Paris',
+                        country: 'França'
+                    },
+                    {
+                        city: 'Salvador',
+                        country: 'Brasil'
+                    }], //vetor de objetos
+                    
+                    movies: ['Harry Potter', 'Star Wars', 'Jurassic Park'],
+                    company: {
+                        name: 'Facebook',
+                        year: 2004,
+                        creator: 'Mark'
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

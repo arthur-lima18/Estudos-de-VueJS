@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Diretivas - v-on</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="directives">
+
+            <p v-on:click="reverseMsg">{{ msg }}</p>
+            <h4 v-on:[eventname]="reverseMsg">{{ msg }}</h4>
+
+            <hr>
+
+            <input type="text" placeholder="Nome para filtragem" v-on:keyup="filterPersons">
+
+            <ul>
+                <li v-for="person in filtredPersons">{{ person }}</li>
+            </ul>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#directives',
+                data: {
+                    msg: 'Testando o V-ON!!!',
+                    eventname: 'click',
+                    persons: ['Arthur Lima', 'Camila Brito', 'Daniel Sabino', 'Gabriel Cunha', 'Daniel Fonseca', 'Leandro Liberio'],
+                    filtredPersons: []
+                },
+                methods: {
+                    reverseMsg: function() {
+                        this.msg = this.msg.split('').reverse().join('')
+                    },
+                    filterPersons: function(event) {
+                        
+                       this.filtredPersons = this.persons.filter(name => {
+                            return name.toUpperCase().includes(event.target.value.toUpperCase())
+                        })
+
+                    }
+                },
+                created() {
+                    this.filtredPersons = this.persons
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    a diretiva v-on permite a criação de um ouvinte de eventos, deixando a aplicação mais rteativa
+    podemos criar eventos personalizados
+-->

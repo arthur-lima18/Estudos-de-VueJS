@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Lifecycle do Vue.JS</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script> <!-- CDN da biblioteca de filtros-->
+
+        <div id="filters">
+            
+            <!-- INICIO do uso dos filtros  da biblioteca -->
+            <h3>{{ name | placeholder('Não há um nome informado') }}</h3> <!-- filtro para caso nao haja um valor inserido --> 
+            <h2>{{ msg | truncate(30) }}</h2> <!-- filtro que insere reticencias em um texto muito grande -->
+            <h2>O meu salário é: {{ salary }} {{ salary | pluralize(['real', 'reais'])}}</h2> <!-- filtro que insere um plural da palavra de acordo com o padrao encontrado -->
+            <!-- FINAL do uso dos filtros  da biblioteca -->
+
+            <h1>Olá {{ name }}</h1>
+            <h1>Olá {{ name | upper }}</h1>
+        
+            <h2>O meu salário é: {{ salary | real }}</h2>
+
+            <input type="text" placeholder="Digite seu salário" v-model="salary">
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#filters',
+                data: {
+                    name: 'Arthur Lima',
+                    salary: 1,
+                    msg: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam cumque blanditiis neque beatae omnis! Ab aliquid sapiente, delectus mollitia ex quam repudiandae excepturi aut fuga praesentium ratione, voluptate, incidunt soluta.'
+                },
+                filters: {
+                    upper: function(value) {
+                        return value.toUpperCase()
+                    },
+                    real: function(value) {
+                        return `R$ ${parseInt(value).toFixed(2)}`
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+<!-- IMPORTANTE!!! 
+    Filtros não alteram diretamente o dado, apenas modificam visualmente
+    Podemos utilizar mais de um filtro, porém, a partir do segundo, ele vai receber o dado ja com o filtro anterior
+
+    Podemos adicionar a biblioteca vue2-filters para usar filtros ja prontos 
+-->

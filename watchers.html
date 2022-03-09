@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Watchers</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="watchers">
+            
+            <input type="text" v-model="country"> <!-- a v-model fica "de olho" e atualiza de acordo com o valor da variavel, ja atualizando na View -->
+        
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#watchers',
+                data: {
+                    country: 'Brasil'
+                },
+                watch: { //obs: computed props sao mais leves que watchers
+                    country: function (newCountry, oldCountry) { //a variavel country vai ser atualizada sempre que houver alteraçoes no input - q coisa linda
+                        console.log(newCountry) //mostra o novo valor
+                        console.log(oldCountry) //mostra o valor antigo
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

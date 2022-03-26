@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> --> <!-- inclusao do bootstrap -->
+        <title>Estudo de Eventos</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="events">
+          
+          <button v-on:click="alert('Hello world')">Clique aqui</button>
+          <button v-on:dblclick="add">Incrementar contador</button>
+          <h4>Valor atual do contador: {{ count }}</h4>
+        
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#events',
+                data: {
+                  count: 0
+                },
+                methods: {
+                  add: function() {
+                    this.count++;
+                  }
+                }
+            })
+
+        </script>
+    </body>
+</html>

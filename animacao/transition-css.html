@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Transições com CSS</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+          .first-enter-active {
+            transition: opacity .5s ease;
+          }
+          .first-leave-active {
+            transition: opacity .5s ease-out;
+          }
+          .first-enter, .first-leave-to {
+            opacity: 0;
+          }
+
+          .second-enter-active {
+            transition: all 0.3s linear;
+          }
+          .second-leave-active {
+            transition: all 0.5s linear;
+          }
+          .second-enter, .second-leave-to {
+            opacity: 0;
+          }
+          
+        </style>
+      </head>
+    <body>
+
+        <div id="animations">
+
+          <transition name="first"> 
+            <h2 v-if="showMsg">Estudo de Transições</h2>
+          </transition>
+
+          <hr>
+
+          <transition name="second">
+            <div v-if="showMsgLorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos harum sint error delectus officia similique, nesciunt quidem animi, ipsa cupiditate incidunt obcaecati, assumenda eos eum quae? Animi atque consectetur non.</div>
+          </transition>
+
+          <button v-on:click="showMsgLorem = !showMsgLorem"> Clique aqui</button>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <script>
+
+            let app = new Vue({
+                el: '#animations',
+                data: {
+                  showMsg: true,
+                  showMsgLorem: false
+                }
+            })
+
+        </script>
+
+    </body>
+</html>
+
+<!--IMPORTANTE!!!!!!!!
+transicao muda um elemento do estado inicial para o final
+animaçao tem maior controle sobre as mudanças
+-->

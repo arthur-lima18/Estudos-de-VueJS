@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- inclusao do bootstrap -->
+        <title>Estudo de Eventos - Modificadores</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="events">
+
+          <div class="container">
+
+            <h1>Estudo de Modificadores</h1>
+
+            <form action="" class="form">
+              <div class="row">
+                
+                <div class="col">
+                  <div class="form-group">
+                    
+                    <label for="">Nome</label>
+                    <input type="text" class="form-control" name="name" placeholder="Digite seu nome">
+                
+                  </div>
+                </div>
+              
+                <div class="col">
+                  <div class="form-group">
+                    
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" name="email" placeholder="Digite seu e-mail">
+                
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                
+                <label for="">Digite a mensagem</label>
+                <textarea name="msg" id="" cols="30" rows="10" class="form-control"></textarea>
+
+              </div>
+
+              <button v-on:click.prevent="send($event)" type="submit" class="btn btn-primary">Enviar formulário</button>
+
+            </form>
+
+            <hr>
+
+            <a v-on:click.prevent.once="alert('O once foi ativado')" href="https://github.com/arthur-lima18">GitHub Arthur Lima</a>
+
+          </div>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#events',
+                data: {
+
+                },
+                methods: {
+                  send: function(event) {
+
+                    let form = event.target.form; //recuperando a tag form
+
+                    let data = new FormData(form); //permite recuperar as infos do formulario de forma simples 
+
+                    for(let value of data.entries()){
+                      console.log(value);
+                    }
+                  }
+                }
+            })
+
+        </script>
+    </body>
+</html>

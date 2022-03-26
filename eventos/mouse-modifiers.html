@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- inclusao do bootstrap -->
+        <title>Estudo de Eventos - Modificadores de Mouse</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="events">
+
+          <div class="container">
+
+            <h1>Estudo de Modificadores</h1>
+
+            <form action="" class="form">
+              
+              <div class="form-group">
+                <label for="">Pressione as teclas para rodar cada modificador</label>
+              
+                <input type="text" class="form-control" placeholder="Pressione o Botão Esquerdo do Mouse" v-on:click.left="exec">
+                <input type="text" class="form-control" placeholder="Pressione o Botão Direito do Mouse" v-on:click.prevent.right="exec">
+                <input type="text" class="form-control" placeholder="Pressione o Botão Central do Mouse" v-on:click.middle="exec"> 
+
+              </div>
+
+            </form>
+
+            <!-- <hr>
+
+            <a v-on:click.prevent.once="alert('O once foi ativado')" href="https://github.com/arthur-lima18">GitHub Arthur Lima</a> -->
+
+          </div>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#events',
+                data: {
+
+                },
+                methods: {
+                  exec: function(event) {
+                    console.log(event.type)
+                  }
+                }
+            })
+
+        </script>
+    </body>
+</html>

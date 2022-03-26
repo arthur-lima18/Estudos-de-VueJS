@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Estilização - Aplicando Classes usando Objetos</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+          .logged {
+            color: red;
+            text-decoration: underline;
+          }
+        </style>
+      </head>
+    <body>
+
+        <div id="styles">
+
+          <h1 v-bind:class="{ logged: isLogged }">Estudo de Estilização</h1> <!-- se isLogged for true, a estilização sera aplicada -->
+          <h3 v-bind:class="classMsg">{{ msg }}</h3>
+        
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <script>
+
+            let app = new Vue({
+                el: '#styles',
+                data: {
+                  isLogged: false,
+                  error: false
+                },
+                computed: {
+                  msg: function(){
+
+                    return this.error ? "Encontramos um erro!" : "Está tudo bem!"
+                  },
+                  classMsg: function(){
+                    return this.error ? "alert-danger" : "alert-success" //classes do bootstrap
+                  }
+                }
+            })
+
+        </script>
+
+    </body>
+</html>

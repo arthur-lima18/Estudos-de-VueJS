@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- inclusao do bootstrap -->
+        <title>Estudo de Eventos - Modificadores</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="events">
+
+          <div class="container">
+
+            <h1>Estudo de Modificadores</h1>
+
+            <form action="" class="form">
+              <div class="row">
+                
+                <div class="col">
+                  <div class="form-group">
+                    
+                    <label for="">Nome</label>
+                    <input type="text" class="form-control" name="name" placeholder="Digite seu nome" v-on:keyup.enter="send(event)">
+                
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="">Pressione as teclas para rodar cada modificador</label>
+              
+                <input type="text" class="form-control" placeholder="Pressione Enter" v-on:keyup.enter="exec">
+                <input type="text" class="form-control" placeholder="Pressione Tab" v-on:keydown.tab="exec">
+                <input type="text" class="form-control" placeholder="Pressione Delete" v-on:keyup.delete="exec"> 
+                <input type="text" class="form-control" placeholder="Pressione Esc" v-on:keyup.esc="exec">
+                <input type="text" class="form-control" placeholder="Pressione Space" v-on:keyup.space="exec">
+                <input type="text" class="form-control" placeholder="Pressione Up" v-on:keyup.up="exec">
+                <input type="text" class="form-control" placeholder="Pressione Down" v-on:keyup.down="exec">
+                <input type="text" class="form-control" placeholder="Pressione Left" v-on:keyup.left="exec">
+                <input type="text" class="form-control" placeholder="Pressione Right" v-on:keyup.right="exec">
+              </div>
+
+            </form>
+
+            <!-- <hr>
+
+            <a v-on:click.prevent.once="alert('O once foi ativado')" href="https://github.com/arthur-lima18">GitHub Arthur Lima</a> -->
+
+          </div>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#events',
+                data: {
+
+                },
+                methods: {
+                  send: function(event) {
+
+                    let form = event.target.form; //recuperando a tag form
+
+                    let data = new FormData(form); //permite recuperar as infos do formulario de forma simples 
+
+                    for(let value of data.entries()){
+                      console.log(value);
+                    }
+                  },
+                  exec: function(event) {
+                    console.log(event.key)
+                  }
+                }
+            })
+
+        </script>
+    </body>
+</html>

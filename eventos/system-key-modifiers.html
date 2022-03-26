@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- inclusao do bootstrap -->
+        <title>Estudo de Eventos - Modificadores</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <div id="events">
+
+          <div class="container">
+
+            <h1>Estudo de Modificadores</h1>
+
+            <form action="" class="form">
+              
+              <div class="form-group">
+                <label for="">Pressione as teclas para rodar cada modificador</label>
+              
+                <input type="text" class="form-control" placeholder="Pressione Ctrl" v-on:keydown.ctrl="exec">
+                <input type="text" class="form-control" placeholder="Pressione Shift" v-on:keydown.shift="exec">
+                <input type="text" class="form-control" placeholder="Pressione Alt" v-on:keydown.alt="exec"> 
+                <input type="text" class="form-control" placeholder="Pressione Meta" v-on:keydown.meta="exec">
+
+              </div>
+
+            </form>
+
+            <div class="row">
+
+              <div class="col" v-on:click.ctrl.exact="toggleClass">1</div>
+              <div class="col" v-on:click.ctrl.exact="toggleClass">2</div>
+              <div class="col" v-on:click.ctrl.exact="toggleClass">3</div>
+              <div class="col" v-on:click.ctrl.exact="toggleClass">4</div>
+
+            </div>
+
+            <!-- <hr>
+
+            <a v-on:click.prevent.once="alert('O once foi ativado')" href="https://github.com/arthur-lima18">GitHub Arthur Lima</a> -->
+
+          </div>
+
+        </div>
+
+        <script>
+
+            let app = new Vue({
+                el: '#events',
+                data: {
+
+                },
+                methods: {
+                  exec: function(event) {
+                    console.log(event.key)
+                  },
+                  toggleClass: function(event) {
+
+                    let element = event.target; //onde ocorreu o evento
+                      
+                    let method = element.classList.contains('bg-info') ? 'remove' : 'add'
+                  
+                    eval(`element.classList.${method}('bg-info')`)
+                  }
+                }
+            })
+
+        </script>
+    </body>
+</html>

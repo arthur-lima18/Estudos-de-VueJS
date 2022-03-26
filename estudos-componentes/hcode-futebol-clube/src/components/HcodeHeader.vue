@@ -11,9 +11,19 @@
 
         <div class="links mr-2">
 
-          <a href="#" class="btn mr-5">Início</a>
-          <a href="#" class="btn mr-5">Noticias</a>
-          <a href="#" class="btn mr-5">Classificações</a>
+          <a href="#" v-on:click.prevent="$emit('change-component', 'home')" class="btn mr-5">Início</a>
+          <a href="#" v-on:click.prevent="$emit('change-component', 'news')" class="btn mr-5">Noticias</a>
+          <a href="#" v-on:click.prevent="$emit('change-component', 'home')" class="btn mr-5">Classificações</a>
+
+          <select name="championship" id="select-championship" class="form-control" v-on:change="$emit('select-championship', $event.target.value)">
+
+            <option value="">Selecione um Campeonato</option>
+            <option value="Campeonato Brasileiro" selected>Campeonato Brasileiro</option>
+            <option value="Campeonato Mineiro">Campeonato Mineiro</option>
+            <option value="Campeonato Espanhol">Campeonato Espanhol</option>
+            <option value="Campeonato Inglês">Campeonato Inglês</option>
+          
+          </select>
         
         </div>
       

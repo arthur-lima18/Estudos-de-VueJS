@@ -4,15 +4,17 @@
 
     <div class="col-3">
 
-      <img v-bind:src="require('../assets/' + this.imgName)" v-bind:alt="imgInfo">
+      <img v-bind:src="require('../assets/' + this.imgName)" v-bind:alt="imgAlt">
 
     </div>
     <div class="col-9">
 
       <h2>{{ title }}</h2>
+
+      <!-- <slot>Notícia Padrão</slot> -->
       <p>{{ content | truncate(200)}}</p>
 
-      <span class="font-italic">{{ newsDate }}</span>
+      <span class="font-italic">{{ formatDate(newsDate) }}</span>
 
     </div>
 
@@ -21,6 +23,8 @@
 </template>
 
 <script>
+import Utils from './../mixins/UtilsMixins' //possui funcoes para uso em todo o codigo
+
 export default {
   props: {
     imgName: {
@@ -35,7 +39,7 @@ export default {
       type: String,
       required: true
     },
-    content: {
+    content: { //remover em caso de uso da tag slot
       type: String,
       required: true
     },
@@ -43,7 +47,8 @@ export default {
       type: String,
       required: true
     }
-  }
+  },
+  mixins: [Utils]
 }
 
 /**

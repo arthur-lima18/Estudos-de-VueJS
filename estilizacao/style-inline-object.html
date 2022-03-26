@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Estilização - inline com object</title>
+    </head>
+    <body>
+
+        <div id="styles">
+
+            <input type="text" placeholder="Digite o tamanho da fonte" v-model="fontSizeProp">
+            <h2 v-bind:style="{ fontSize: fontSizeProp + 'px' }">Mudando o font-size</h2>
+            
+            <input type="text" v-model="fontStyleRed">
+            <input type="text" v-model="fontStyleGreen">
+            <input type="text" v-model="fontStyleBlue">
+            <div v-bind:style="styleRGB">Mudando a font-color</div>
+            
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <script>
+
+            let app = new Vue({
+                el: '#styles',
+                data: {
+                    fontSizeProp: 20,
+                    fontStyleRed: 0,
+                    fontStyleGreen: 0,
+                    fontStyleBlue: 0
+                },
+                computed: {
+                    styleRGB: function() {
+                        return {
+                            color: `rgb(${this.fontStyleRed}, ${this.fontStyleGreen}, ${this.fontStyleBlue})`
+                        }
+                    }
+                }
+            })
+
+        </script>
+
+    </body>
+</html>

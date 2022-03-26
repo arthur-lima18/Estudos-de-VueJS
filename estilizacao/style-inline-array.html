@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Estilização - Aplicando Classes usando Objetos</title>
+    </head>
+    <body>
+
+        <div id="styles">
+
+            <a href="https://github.com/arthur-lima18" v-bind:style="[fontSizeStyle, fontColorStyle, linkStyle]">GitHub Arthur Lima</a>
+        
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <script>
+
+            let app = new Vue({
+                el: '#styles',
+                data: {
+                  fontSizeStyle: {
+                    fontSize: '30px'
+                  },
+                  fontColorStyle: {
+                    color: 'red'
+                  },
+                  linkStyle: {
+                    textDecoration: 'none'
+                  }
+                }
+            })
+
+        </script>
+
+    </body>
+</html>

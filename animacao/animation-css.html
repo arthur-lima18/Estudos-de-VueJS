@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Estudo de Animações com CSS</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+          .first-enter-active {
+            animation: animation_first 1s;
+          }
+          .first-leave-active {
+            animation: animation_first 1s reverse;
+          }
+
+          @keyframes animation_first {
+            from {
+              background: #fff
+            }
+            to {
+              background: #999
+            }
+          }
+
+          .second-enter-active {
+            animation:  animation_second 1s;
+          }
+          .second-leave-active {
+            animation:  animation_second 2s reverse;
+          }
+          @keyframes animation_second {
+            0% {
+              background-color: #fff;
+              font-size: 20px;
+            }
+            50% {
+              background-color: #030;
+              font-size: 50px;
+            }
+            100% {
+              background: #fff;
+              font-size: 30px;
+            }
+          }
+        </style>
+      </head>
+    <body>
+
+        <div id="animations">
+
+          <transition name="first"> 
+            <h2 v-if="showMsg">Estudo de Animações</h2>
+          </transition>
+
+          <hr>
+
+          <transition name="second">
+            <div v-if="showMsgLorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos harum sint error delectus officia similique, nesciunt quidem animi, ipsa cupiditate incidunt obcaecati, assumenda eos eum quae? Animi atque consectetur non.</div>
+          </transition>
+
+          <button v-on:click="showMsgLorem = !showMsgLorem"> Clique aqui</button>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+        <script>
+
+            let app = new Vue({
+                el: '#animations',
+                data: {
+                  showMsg: true,
+                  showMsgLorem: false
+                }
+            })
+
+        </script>
+
+    </body>
+</html>
+
+<!--IMPORTANTE!!!!!!!!
+transicao muda um elemento do estado inicial para o final
+animaçao tem maior controle sobre as mudanças
+-->

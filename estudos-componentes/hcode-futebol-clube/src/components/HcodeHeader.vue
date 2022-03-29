@@ -11,8 +11,12 @@
 
         <div class="links mr-2">
 
-          <a href="#" v-on:click.prevent="$emit('change-component', 'home')" class="btn mr-5">Início</a>
-          <a href="#" v-on:click.prevent="$emit('change-component', 'news')" class="btn mr-5">Noticias</a>
+          <router-link to="/" class="btn mr-5">Início</router-link> <!-- tag de navegação do Vue -->
+          <router-link to="/news" class="btn mr-5">Notícias</router-link> <!-- tag de navegação do Vue -->
+          <!-- <router-link active-class="link-active" to="/" class="btn mr-5">Classificações</router-link> tag de navegação do Vue -->
+
+          <!-- <a href="#" v-on:click.prevent="$emit('change-component', 'home')" class="btn mr-5">Início</a>
+          <a href="#" v-on:click.prevent="$emit('change-component', 'news')" class="btn mr-5">Noticias</a> -->
           <a href="#" v-on:click.prevent="$emit('change-component', 'home')" class="btn mr-5">Classificações</a>
 
           <select name="championship" id="select-championship" class="form-control" v-on:change="$emit('select-championship', $event.target.value)">
@@ -62,5 +66,9 @@ header {
 .links a:focus {
   outline: none !important; /** "!important" sobrescreve  o estilo */
   box-shadow: none !important;
+}
+.link-active {
+  background-color: #fff;
+  color: #000 !important;
 }
 </style>

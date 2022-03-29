@@ -5,9 +5,11 @@
         v-on:select-championship="changeChampionship" 
         v-on:change-component="changeComponent"  
       />
-      <HcodeSection
+      <!-- <HcodeSection
         v-bind:current-component="currentSectionComponent"  
-      />
+      /> -->
+
+      <HcodeSection />
       <HcodeFooter />
 
   </div>
@@ -29,7 +31,7 @@ export default {
   },
   data: function() {
     return {
-      currentSectionComponent: 'HcodeSectionBanner'
+      // currentSectionComponent: 'HcodeSectionBanner'
     }
   },
   methods: {

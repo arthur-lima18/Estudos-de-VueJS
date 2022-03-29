@@ -1,6 +1,6 @@
 <template>
   
-  <div class="row">
+  <div class="row div-news">
 
     <div class="col-3">
 
@@ -9,8 +9,9 @@
     </div>
     <div class="col-9">
 
-      <h2>{{ title }}</h2>
-
+      <!-- <h2 v-on:click="goToPage(`/news/${idNotice}`)">{{ title }}</h2> -->
+      <router-link v-bind:to="{ name: 'notice', params: {idnotice: idNotice} }" tag="h2">{{ title }}</router-link>
+      
       <!-- <slot>Notícia Padrão</slot> -->
       <p>{{ content | truncate(200)}}</p>
 
@@ -26,6 +27,11 @@
 import Utils from './../mixins/UtilsMixins' //possui funcoes para uso em todo o codigo
 
 export default {
+  methods: {
+    // goToPage: function(page) {
+    //   this.$router.push(page)
+    // }
+  },
   props: {
     imgName: {
       type: String,
@@ -46,7 +52,11 @@ export default {
     newsDate:{
       type: String,
       required: true
-    }
+    },
+     idNotice: {
+      type: Number,
+      required: true
+    },
   },
   mixins: [Utils]
 }
@@ -62,14 +72,14 @@ export default {
  */
 </script>
 
-<style scoped>
-.row {
+<style>/** nao possui o 'scoped' para podermos utilizar o estilo em HcodeSectionNewsNotice */
+.div-news {
   margin-bottom: 30px;
 }
-img {
+.div-news img {
   width: 100%;
 }
-h2{
+.div-news h2 {
   cursor: pointer;
   color: #fff;
 }

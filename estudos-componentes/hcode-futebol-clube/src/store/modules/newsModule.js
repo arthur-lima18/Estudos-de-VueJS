@@ -26,6 +26,13 @@ export default {
   getters: {
     getNews: function(state) {
       return state.news
+    },
+    getNoticeFromId: state => id => { //recebe o state e retorna um id
+      let notice = state.news.find(item => {
+        return (item.id == id)
+      })
+
+      return notice
     }
   }
 }
